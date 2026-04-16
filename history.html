@@ -184,6 +184,7 @@
   textarea.form-input { resize: vertical; min-height: 120px; }
   .form-submit { width: 100%; background: var(--purple); color: #fff; border: none; padding: 14px; border-radius: 30px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; margin-top: 8px; }
   .form-submit:hover { background: var(--purple-light); transform: translateY(-1px); }
+  .form-status { margin-top: 12px; font-size: 13px; color: var(--purple-light); }
 
   /* FOOTER */
   footer { padding: 48px; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
@@ -500,21 +501,25 @@
           <div><div class="contact-detail-label">Year</div><div class="contact-detail-text">2026</div></div>
         </div>
       </div>
-      <div class="form">
+      <form class="form" action="https://formsubmit.co/aslamzeshan2009@gmail.com" method="POST" target="hidden_iframe" onsubmit="this.querySelector('.form-submit').textContent='Sending...'; this.querySelector('.form-status').textContent='Sending your message...';">
+        <input type="hidden" name="_subject" value="New COSMOS website message">
+        <input type="hidden" name="_template" value="table">
         <div class="form-group">
           <label class="form-label">Your Name</label>
-          <input class="form-input" type="text" placeholder="e.g. Alex Johnson">
+          <input class="form-input" type="text" name="name" placeholder="e.g. Alex Johnson" required>
         </div>
         <div class="form-group">
           <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="you@school.edu">
+          <input class="form-input" type="email" name="email" placeholder="you@school.edu" required>
         </div>
         <div class="form-group">
           <label class="form-label">Message</label>
-          <textarea class="form-input" placeholder="Ask me anything about space..."></textarea>
+          <textarea class="form-input" name="message" placeholder="Ask me anything about space..." required></textarea>
         </div>
-        <button class="form-submit" onclick="this.textContent='Message sent! âœ¦'; this.style.background='#3a3a6a';">Send Message â†’</button>
-      </div>
+        <button class="form-submit" type="submit">Send Message â†’</button>
+        <p class="form-status">Your message will be sent directly to the project inbox.</p>
+      </form>
+      <iframe name="hidden_iframe" style="display:none;"></iframe>
     </div>
   </section>
   <footer>
