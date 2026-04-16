@@ -702,16 +702,6 @@
     color: var(--purple-light);
   }
 
-  .form-note {
-    margin-top: 22px;
-    padding: 14px 16px;
-    border-radius: 14px;
-    background: rgba(111, 231, 255, 0.08);
-    border: 1px solid rgba(111, 231, 255, 0.16);
-    color: var(--muted);
-    font-size: 13px;
-  }
-
   footer {
     padding: 48px;
     border-top: 1px solid var(--border);
@@ -1112,7 +1102,7 @@
         </div>
         <div class="form-group">
           <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" name="_replyto" placeholder="you@school.edu" required>
+          <input class="form-input" type="email" name="email" placeholder="you@school.edu" required>
         </div>
         <div class="form-group">
           <label class="form-label">Message</label>
@@ -1120,7 +1110,6 @@
         </div>
         <button class="form-submit" type="submit">Send Message &rarr;</button>
         <p class="form-status" id="form-status">Your message will be sent directly to the project inbox.</p>
-        <div class="form-note">The first test submission may ask the owner to confirm the email connection once. After that, messages should go straight to the inbox.</div>
       </form>
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     </div>
