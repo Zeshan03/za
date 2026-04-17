@@ -3,79 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COSMOS &mdash; Explore the Universe</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<title>COSMOS - Explore the Universe</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #060814;
-    --bg2: #0e1122;
-    --bg3: #151936;
-    --panel: rgba(16, 20, 44, 0.88);
+    --bg2: #0d1226;
+    --bg3: #151b38;
+    --panel: rgba(13, 18, 38, 0.9);
     --purple: #6c63ff;
-    --purple-light: #a9a4ff;
-    --purple-dim: rgba(108, 99, 255, 0.16);
-    --cyan: #6fe7ff;
-    --text: #edf0ff;
-    --muted: #98a0c7;
-    --border: rgba(170, 180, 255, 0.14);
-    --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+    --purple-light: #aba7ff;
+    --cyan: #74e8ff;
+    --gold: #ffd36a;
+    --text: #edf1ff;
+    --muted: #9ca6cb;
+    --border: rgba(180, 190, 255, 0.16);
+    --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     background:
-      radial-gradient(circle at top right, rgba(111, 231, 255, 0.12), transparent 28%),
-      radial-gradient(circle at 18% 18%, rgba(108, 99, 255, 0.18), transparent 30%),
-      linear-gradient(180deg, #05070f 0%, #080b18 36%, #090d1d 100%);
+      radial-gradient(circle at 20% 10%, rgba(108, 99, 255, 0.22), transparent 26%),
+      radial-gradient(circle at 80% 0%, rgba(116, 232, 255, 0.12), transparent 22%),
+      linear-gradient(180deg, #04060d, #070b18 36%, #0a1020 100%);
     color: var(--text);
     font-family: "DM Sans", sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
     overflow-x: hidden;
+    line-height: 1.7;
   }
 
-  .stars-bg,
-  .nebula-bg {
+  .stars,
+  .aurora {
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
   }
 
-  .stars-bg {
+  .stars {
     background:
-      radial-gradient(1px 1px at 8% 14%, rgba(255,255,255,0.8), transparent 100%),
-      radial-gradient(1px 1px at 22% 28%, rgba(255,255,255,0.55), transparent 100%),
-      radial-gradient(1.4px 1.4px at 35% 11%, rgba(169,164,255,0.75), transparent 100%),
-      radial-gradient(1px 1px at 52% 24%, rgba(255,255,255,0.65), transparent 100%),
-      radial-gradient(1.2px 1.2px at 68% 15%, rgba(111,231,255,0.6), transparent 100%),
-      radial-gradient(1px 1px at 82% 33%, rgba(255,255,255,0.55), transparent 100%),
-      radial-gradient(1px 1px at 15% 64%, rgba(255,255,255,0.45), transparent 100%),
-      radial-gradient(1.2px 1.2px at 30% 76%, rgba(169,164,255,0.5), transparent 100%),
-      radial-gradient(1px 1px at 48% 68%, rgba(255,255,255,0.5), transparent 100%),
-      radial-gradient(1px 1px at 65% 84%, rgba(255,255,255,0.4), transparent 100%),
-      radial-gradient(1.2px 1.2px at 88% 72%, rgba(111,231,255,0.5), transparent 100%);
-    animation: twinkle 10s ease-in-out infinite alternate;
+      radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.85), transparent 100%),
+      radial-gradient(1.2px 1.2px at 26% 42%, rgba(255,255,255,0.65), transparent 100%),
+      radial-gradient(1px 1px at 44% 16%, rgba(171,167,255,0.85), transparent 100%),
+      radial-gradient(1px 1px at 58% 24%, rgba(255,255,255,0.55), transparent 100%),
+      radial-gradient(1.2px 1.2px at 74% 18%, rgba(116,232,255,0.7), transparent 100%),
+      radial-gradient(1px 1px at 88% 34%, rgba(255,255,255,0.6), transparent 100%),
+      radial-gradient(1px 1px at 18% 74%, rgba(255,255,255,0.55), transparent 100%),
+      radial-gradient(1.2px 1.2px at 37% 78%, rgba(171,167,255,0.65), transparent 100%),
+      radial-gradient(1px 1px at 63% 72%, rgba(255,255,255,0.45), transparent 100%),
+      radial-gradient(1px 1px at 84% 82%, rgba(116,232,255,0.55), transparent 100%);
+    animation: twinkle 9s ease-in-out infinite alternate;
   }
 
-  .nebula-bg {
+  .aurora {
     background:
-      radial-gradient(circle at 78% 16%, rgba(108, 99, 255, 0.16), transparent 0 22%),
-      radial-gradient(circle at 12% 80%, rgba(111, 231, 255, 0.08), transparent 0 24%),
-      radial-gradient(circle at 60% 58%, rgba(167, 139, 250, 0.08), transparent 0 18%);
-    filter: blur(12px);
+      radial-gradient(circle at 78% 16%, rgba(108, 99, 255, 0.14), transparent 0 18%),
+      radial-gradient(circle at 14% 80%, rgba(116, 232, 255, 0.08), transparent 0 22%),
+      radial-gradient(circle at 56% 54%, rgba(255, 211, 106, 0.06), transparent 0 15%);
+    filter: blur(14px);
     animation: drift 18s ease-in-out infinite alternate;
   }
 
   @keyframes twinkle {
-    from { opacity: 0.55; transform: scale(1); }
-    to { opacity: 1; transform: scale(1.02); }
+    from { opacity: 0.55; }
+    to { opacity: 1; }
   }
 
   @keyframes drift {
-    from { transform: translateY(-10px) translateX(0); }
-    to { transform: translateY(16px) translateX(-8px); }
+    from { transform: translateY(-8px); }
+    to { transform: translateY(18px); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   nav {
@@ -83,44 +86,43 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 50;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 18px 48px;
-    background: rgba(5, 8, 17, 0.82);
-    backdrop-filter: blur(18px);
+    background: rgba(4, 7, 16, 0.82);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
 
   .nav-logo {
     font-family: "Syne", sans-serif;
-    font-weight: 800;
-    font-size: 20px;
     color: var(--text);
-    letter-spacing: 0.1em;
     text-decoration: none;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    font-size: 20px;
   }
 
   .nav-logo span { color: var(--purple-light); }
-
   .nav-toggle {
     display: none;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
     font-size: 20px;
+    cursor: pointer;
   }
 
   .nav-links {
     display: flex;
-    align-items: center;
     gap: 28px;
     list-style: none;
+    align-items: center;
   }
 
   .nav-links a {
@@ -128,7 +130,6 @@
     color: var(--muted);
     text-decoration: none;
     font-size: 14px;
-    letter-spacing: 0.03em;
     transition: color 0.2s ease;
   }
 
@@ -137,39 +138,30 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -10px;
+    bottom: -9px;
     height: 2px;
     border-radius: 999px;
     background: linear-gradient(90deg, var(--cyan), var(--purple-light));
     transform: scaleX(0);
-    transform-origin: center;
     transition: transform 0.2s ease;
   }
 
   .nav-links a:hover,
   .nav-links a.active { color: var(--text); }
-
   .nav-links a:hover::after,
   .nav-links a.active::after { transform: scaleX(1); }
 
   .nav-cta {
-    background: linear-gradient(135deg, var(--purple), #4a9cff);
-    color: #fff;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 999px;
     text-decoration: none;
-    box-shadow: 0 10px 30px rgba(76, 115, 255, 0.26);
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    color: #fff;
+    background: linear-gradient(135deg, var(--purple), #4b9dff);
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
   }
 
-  .nav-cta:hover {
-    opacity: 0.92;
-    transform: translateY(-1px);
-  }
-
-  .page { display: none; min-height: 100vh; position: relative; z-index: 1; }
+  .page { display: none; position: relative; z-index: 1; min-height: 100vh; }
   body.home-page #page-home,
   body.about-page #page-about,
   body.planets-page #page-planets,
@@ -195,515 +187,554 @@
     transform: scaleX(1);
   }
 
+  .hero,
+  .section {
+    padding: 120px 48px 84px;
+  }
+
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 42px;
     align-items: center;
-    gap: 48px;
-    padding: 132px 48px 88px;
-    position: relative;
   }
 
-  .hero-glow {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 520px;
-    height: 520px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(108,99,255,0.22), transparent 68%);
-    filter: blur(8px);
-  }
-
-  .hero-tag,
-  .section-label {
+  .eyebrow {
     font-size: 11px;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--purple-light);
-    margin-bottom: 18px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 18px;
   }
 
-  .hero-tag::before,
-  .section-label::before {
+  .eyebrow::before {
     content: "";
-    display: block;
     width: 26px;
     height: 1px;
     background: var(--purple-light);
   }
 
-  .hero-title {
-    font-family: "Syne", sans-serif;
-    font-size: clamp(52px, 8vw, 96px);
-    font-weight: 800;
-    line-height: 0.98;
-    margin-bottom: 24px;
-    max-width: 720px;
+  h1,
+  h2,
+  h3,
+  summary { font-family: "Syne", sans-serif; }
+
+  .hero h1 {
+    font-size: clamp(54px, 8vw, 92px);
+    line-height: 0.96;
+    margin-bottom: 22px;
   }
 
-  .hero-title em {
+  .hero h1 em {
     color: var(--cyan);
     font-style: normal;
-    text-shadow: 0 0 24px rgba(111, 231, 255, 0.25);
+    text-shadow: 0 0 24px rgba(116, 232, 255, 0.2);
   }
 
-  .hero-sub {
-    font-size: 18px;
-    color: var(--muted);
-    max-width: 520px;
-    margin-bottom: 40px;
-    font-weight: 300;
-  }
+  .hero p,
+  .section-sub { color: var(--muted); font-size: 17px; max-width: 640px; }
 
   .hero-actions {
+    margin-top: 34px;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    align-items: center;
   }
 
   .btn-primary,
-  .btn-ghost {
+  .btn-secondary {
     text-decoration: none;
-    font-size: 15px;
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    border-radius: 999px;
+    padding: 14px 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    transition: transform 0.2s ease;
   }
 
   .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--purple), #4a9cff);
+    background: linear-gradient(135deg, var(--purple), #4b9dff);
     color: #fff;
-    padding: 14px 30px;
-    border-radius: 999px;
-    font-weight: 600;
-    box-shadow: 0 14px 34px rgba(76, 115, 255, 0.24);
-    border: none;
-    cursor: pointer;
   }
 
-  .btn-primary:hover { transform: translateY(-1px); }
-
-  .btn-ghost {
-    color: var(--muted);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .btn-ghost:hover {
+  .btn-secondary {
     color: var(--text);
-    transform: translateY(-1px);
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    margin-top: 64px;
-  }
-
-  .hero-stat {
-    background: rgba(12, 16, 34, 0.7);
     border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 22px 20px;
-    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.03);
   }
 
-  .hero-stat-num {
-    font-family: "Syne", sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  .hero-stat-label {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 4px;
-    letter-spacing: 0.05em;
-  }
+  .btn-primary:hover,
+  .btn-secondary:hover { transform: translateY(-2px); }
 
   .hero-visual {
-    position: relative;
-    min-height: 520px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-planet-card {
-    position: relative;
-    width: min(100%, 420px);
-    aspect-ratio: 1 / 1;
-    border-radius: 36px;
+    min-height: 460px;
+    border-radius: 34px;
     background:
-      radial-gradient(circle at 36% 28%, rgba(111, 231, 255, 0.32), transparent 18%),
-      radial-gradient(circle at 70% 74%, rgba(108, 99, 255, 0.36), transparent 20%),
-      linear-gradient(160deg, rgba(17, 23, 48, 0.92), rgba(8, 12, 28, 0.96));
+      radial-gradient(circle at 34% 34%, rgba(116,232,255,0.26), transparent 20%),
+      radial-gradient(circle at 68% 74%, rgba(108,99,255,0.22), transparent 20%),
+      linear-gradient(160deg, rgba(17, 22, 46, 0.95), rgba(7, 10, 24, 0.98));
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
+    position: relative;
     overflow: hidden;
   }
 
-  .hero-planet-card::before,
-  .hero-planet-card::after {
+  .hero-visual::before {
     content: "";
     position: absolute;
+    inset: 92px;
     border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #78cbff, #234984 65%, #13253d 100%);
+    box-shadow: 0 0 60px rgba(108, 99, 255, 0.22);
   }
 
-  .hero-planet-card::before {
-    inset: 90px;
-    background:
-      radial-gradient(circle at 30% 30%, #71c4ff, #244b89 65%, #14233d 100%);
-    box-shadow: 0 0 60px rgba(76, 115, 255, 0.24);
-  }
-
-  .hero-planet-card::after {
+  .hero-visual::after {
+    content: "";
+    position: absolute;
     width: 360px;
-    height: 120px;
-    top: 146px;
+    height: 118px;
+    border-radius: 50%;
+    border: 2px solid rgba(171, 167, 255, 0.28);
+    top: 150px;
     left: 30px;
-    border: 2px solid rgba(169, 164, 255, 0.26);
     transform: rotate(18deg);
   }
 
-  .hero-chip {
+  .hero-note {
     position: absolute;
-    padding: 10px 14px;
-    background: rgba(10, 14, 29, 0.86);
-    border: 1px solid var(--border);
+    padding: 12px 14px;
     border-radius: 14px;
-    font-size: 12px;
+    background: rgba(9, 13, 29, 0.84);
+    border: 1px solid var(--border);
     color: var(--muted);
+    font-size: 12px;
+    max-width: 180px;
     box-shadow: var(--shadow);
   }
 
-  .hero-chip strong {
+  .hero-note strong {
     display: block;
     color: var(--text);
+    margin-bottom: 4px;
     font-size: 13px;
-    margin-bottom: 2px;
   }
 
-  .chip-top { top: 36px; right: 24px; }
-  .chip-bottom { left: 26px; bottom: 34px; }
+  .hero-note.top { top: 26px; right: 26px; }
+  .hero-note.bottom { left: 24px; bottom: 28px; }
 
-  .section { padding: 104px 48px; }
-  .section-title {
-    font-family: "Syne", sans-serif;
-    font-size: clamp(34px, 4vw, 54px);
-    line-height: 1.06;
-    margin-bottom: 16px;
-  }
-
-  .section-sub {
-    max-width: 620px;
-    font-size: 17px;
-    color: var(--muted);
-    font-weight: 300;
-    margin-bottom: 56px;
-  }
-
-  .about-grid,
-  .contact-grid {
+  .stats {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-
-  .about-text p,
-  .contact-info p {
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-
-  .facts-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
+    margin-top: 54px;
   }
 
+  .stat,
+  .card,
   .fact-card,
   .planet-card,
   .mission-card,
-  .source-card {
+  .tool-card,
+  .gallery-card,
+  .faq-item,
+  .compare-wrap {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 22px;
     box-shadow: var(--shadow);
   }
 
-  .fact-card {
-    padding: 24px;
+  .stat {
+    padding: 20px;
+    animation: fadeUp 0.7s ease both;
   }
 
-  .fact-num {
-    font-family: "Syne", sans-serif;
+  .stat strong {
+    display: block;
     font-size: 28px;
-    color: var(--cyan);
-    margin-bottom: 6px;
+    font-family: "Syne", sans-serif;
+    margin-bottom: 2px;
   }
 
-  .fact-label { font-size: 13px; color: var(--muted); }
+  .stat span { color: var(--muted); font-size: 13px; }
 
-  .sources-grid {
+  .section h2 {
+    font-size: clamp(36px, 4vw, 58px);
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  .section-sub { margin-bottom: 46px; }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .facts-grid,
+  .gallery-grid,
+  .tech-grid,
+  .discoveries-grid,
+  .missions-grid,
+  .cosmic-grid,
+  .exo-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .facts-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tech-grid,
+  .discoveries-grid,
+  .missions-grid,
+  .cosmic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .exo-grid { grid-template-columns: 1.15fr 0.85fr; }
+
+  .fact-card,
+  .tool-card,
+  .gallery-card,
+  .card {
+    padding: 24px;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .fact-card strong {
+    display: block;
+    color: var(--gold);
+    font-size: 28px;
+    margin-bottom: 6px;
+    font-family: "Syne", sans-serif;
+  }
+
+  .fact-card p,
+  .tool-card p,
+  .gallery-card p,
+  .card p { color: var(--muted); font-size: 14px; }
+
+  .gallery-card img,
+  .exo-grid img,
+  .cosmic-image img {
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+  }
+
+  .gallery-card figure,
+  .exo-grid figure,
+  .cosmic-image figure { display: grid; gap: 12px; }
+
+  .gallery-card figcaption,
+  .exo-grid figcaption,
+  .cosmic-image figcaption {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .gallery-card strong,
+  .tool-card h3,
+  .card h3,
+  .faq-item summary,
+  .planet-name,
+  .mission-card summary,
+  .compare-wrap h3 { font-size: 22px; margin-bottom: 8px; }
+
+  .tool-card ul,
+  .card ul {
+    margin-top: 14px;
+    padding-left: 18px;
+    color: var(--text);
+    font-size: 14px;
+  }
+
+  .filter-bar,
+  .search-row,
+  .quiz-answers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .filter-btn,
+  .quiz-btn {
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    padding: 10px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .filter-btn.active,
+  .quiz-btn:hover {
+    background: linear-gradient(135deg, var(--purple), #477cff);
+    border-color: transparent;
+  }
+
+  .search-input {
+    width: min(420px, 100%);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    padding: 13px 15px;
+    font: inherit;
+  }
+
+  .planet-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    margin-top: 44px;
-  }
-
-  .source-card { padding: 22px; }
-  .source-card h3 {
-    font-family: "Syne", sans-serif;
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-  .source-card p { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
-  .source-card a { color: var(--cyan); text-decoration: none; font-size: 14px; }
-
-  .planets-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
   }
 
   .planet-card {
-    padding: 28px;
-    display: grid;
-    grid-template-columns: 84px 1fr;
-    gap: 22px;
-    align-items: start;
-    transition: transform 0.22s ease, border-color 0.22s ease;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeUp 0.7s ease both;
   }
 
-  .planet-card:hover,
-  .mission-card:hover,
-  .fact-card:hover,
-  .source-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(169, 164, 255, 0.34);
+  .planet-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(171, 167, 255, 0.34);
+    box-shadow: 0 0 0 1px rgba(171, 167, 255, 0.12), var(--shadow);
+  }
+
+  .planet-card:hover .planet-fact {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .planet-orb {
     width: 84px;
     height: 84px;
     border-radius: 50%;
-    box-shadow: inset -16px -12px 24px rgba(0, 0, 0, 0.22), 0 0 30px rgba(108, 99, 255, 0.15);
-  }
-
-  .planet-name {
-    font-family: "Syne", sans-serif;
-    font-size: 22px;
-    margin-bottom: 6px;
+    margin-bottom: 18px;
+    box-shadow: inset -16px -12px 24px rgba(0, 0, 0, 0.22), 0 0 28px rgba(108, 99, 255, 0.16);
   }
 
   .planet-tag {
     display: inline-block;
     font-size: 11px;
     color: var(--purple-light);
-    background: var(--purple-dim);
     padding: 4px 10px;
     border-radius: 999px;
-    margin-bottom: 10px;
-    letter-spacing: 0.04em;
-  }
-
-  .planet-desc { color: var(--muted); font-size: 14px; }
-
-  .timeline { max-width: 760px; }
-  .tl-item { display: flex; gap: 32px; margin-bottom: 48px; }
-  .tl-left { display: flex; flex-direction: column; align-items: center; width: 88px; flex-shrink: 0; }
-  .tl-year {
-    font-family: "Syne", sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--cyan);
-    letter-spacing: 0.08em;
-  }
-  .tl-line-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--purple);
-    margin: 12px 0;
-    border: 2px solid var(--purple-light);
-    box-shadow: 0 0 18px rgba(108, 99, 255, 0.34);
-  }
-  .tl-line { flex: 1; width: 1px; background: var(--border); }
-  .tl-event {
-    font-family: "Syne", sans-serif;
-    font-size: 20px;
-    margin-bottom: 8px;
-  }
-  .tl-desc { color: var(--muted); }
-
-  .missions-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  .mission-card {
-    padding: 28px;
-    transition: transform 0.22s ease, border-color 0.22s ease;
-  }
-
-  .mission-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--purple-light);
+    background: rgba(108, 99, 255, 0.12);
     margin-bottom: 12px;
   }
 
-  .mission-kicker::before {
-    content: "";
-    width: 16px;
-    height: 1px;
-    background: var(--purple-light);
-  }
+  .planet-card p { color: var(--muted); font-size: 14px; }
 
-  .mission-title {
-    font-family: "Syne", sans-serif;
-    font-size: 22px;
-    margin-bottom: 8px;
-  }
-
-  .mission-year {
-    font-size: 13px;
-    color: var(--cyan);
-    margin-bottom: 14px;
-  }
-
-  .mission-card p { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
-
-  .mission-points {
-    list-style: none;
-    display: grid;
-    gap: 10px;
-  }
-
-  .mission-points li {
+  .planet-fact {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(116, 232, 255, 0.08);
+    border: 1px solid rgba(116, 232, 255, 0.16);
     color: var(--text);
     font-size: 13px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 12px;
-    padding: 10px 12px;
+    opacity: 0.45;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
+
+  .compare-wrap {
+    padding: 24px;
+    margin-top: 28px;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  th { color: var(--purple-light); font-weight: 700; }
+  td { color: var(--muted); }
+
+  .timeline {
+    display: grid;
+    gap: 22px;
+    margin-bottom: 36px;
+  }
+
+  .timeline details,
+  .mission-card,
+  .faq-item {
+    padding: 22px 24px;
+  }
+
+  .timeline summary,
+  .mission-card summary,
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .timeline summary::-webkit-details-marker,
+  .mission-card summary::-webkit-details-marker,
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .timeline details p,
+  .mission-card p,
+  .mission-card li,
+  .faq-item p { color: var(--muted); font-size: 14px; }
+
+  .timeline-content,
+  .mission-content {
+    padding-top: 14px;
+  }
+
+  .timeline-year,
+  .mission-meta {
+    color: var(--cyan);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mission-card summary { margin-bottom: 8px; }
+  .mission-content ul { margin-top: 12px; padding-left: 18px; }
+
+  .quiz-card {
+    padding: 26px;
+  }
+
+  .quiz-card p { color: var(--muted); margin-bottom: 18px; }
+  .quiz-result {
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(116, 232, 255, 0.08);
+    border: 1px solid rgba(116, 232, 255, 0.16);
+    display: none;
+  }
+
+  .quiz-result strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--cyan);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 24px;
+  }
+
+  .contact-panel,
+  .form,
+  .faq-wrap {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .contact-panel,
+  .faq-wrap,
+  .form { padding: 26px; }
 
   .contact-detail {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 18px;
+    margin-top: 18px;
   }
 
   .contact-icon {
     width: 42px;
     height: 42px;
     border-radius: 12px;
-    background: var(--purple-dim);
-    border: 1px solid rgba(169, 164, 255, 0.24);
+    background: rgba(108, 99, 255, 0.14);
+    border: 1px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
   }
 
-  .contact-detail-label {
-    font-size: 12px;
+  .contact-detail small {
+    display: block;
     color: var(--purple-light);
+    font-size: 12px;
     margin-bottom: 2px;
   }
 
-  .contact-detail-text {
-    font-size: 14px;
-    color: var(--muted);
-  }
+  .contact-detail span { color: var(--muted); font-size: 14px; }
 
-  .form {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 38px;
-    box-shadow: var(--shadow);
-  }
-
-  .form-group { margin-bottom: 24px; }
+  .form-group { margin-bottom: 20px; }
   .form-label {
+    display: block;
     font-size: 12px;
-    color: var(--purple-light);
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: var(--purple-light);
     margin-bottom: 8px;
-    display: block;
   }
 
   .form-input {
     width: 100%;
-    background: rgba(11, 15, 31, 0.92);
+    border-radius: 14px;
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 13px 16px;
+    background: rgba(255, 255, 255, 0.03);
     color: var(--text);
-    font-size: 15px;
-    font-family: "DM Sans", sans-serif;
-    outline: none;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    padding: 13px 15px;
+    font: inherit;
   }
 
-  .form-input:focus {
-    border-color: rgba(111, 231, 255, 0.5);
-    transform: translateY(-1px);
-  }
-
-  .form-input::placeholder { color: #5d648b; }
-  textarea.form-input { resize: vertical; min-height: 132px; }
+  textarea.form-input { min-height: 130px; resize: vertical; }
 
   .form-submit {
     width: 100%;
-    background: linear-gradient(135deg, var(--purple), #4a9cff);
-    color: #fff;
     border: none;
-    padding: 14px;
     border-radius: 999px;
-    font-size: 15px;
-    font-weight: 600;
+    background: linear-gradient(135deg, var(--purple), #4b9dff);
+    color: #fff;
+    padding: 14px;
+    font: inherit;
+    font-weight: 700;
     cursor: pointer;
-    font-family: "DM Sans", sans-serif;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    margin-top: 8px;
-  }
-
-  .form-submit:hover {
-    opacity: 0.94;
-    transform: translateY(-1px);
+    margin-top: 6px;
   }
 
   .form-status {
     margin-top: 12px;
-    font-size: 13px;
     color: var(--purple-light);
+    font-size: 13px;
+  }
+
+  .thank-you {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(108, 99, 255, 0.12);
+    border: 1px solid rgba(108, 99, 255, 0.18);
+    color: var(--muted);
   }
 
   footer {
-    padding: 48px;
+    padding: 42px 48px;
     border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
@@ -713,66 +744,66 @@
 
   .footer-logo {
     font-family: "Syne", sans-serif;
-    font-weight: 800;
     font-size: 18px;
-    color: var(--text);
+    font-weight: 800;
   }
 
   .footer-logo span { color: var(--purple-light); }
-  .footer-copy { font-size: 13px; color: var(--muted); }
+
   .footer-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 22px;
+    gap: 20px;
   }
 
-  .footer-links a {
+  .footer-links a,
+  .source-link {
     color: var(--muted);
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
   }
 
-  .footer-links a:hover { color: var(--text); }
+  .source-link { color: var(--cyan); }
+  .footer-copy { color: var(--muted); font-size: 13px; }
 
-  @media (max-width: 980px) {
+  @media (max-width: 1100px) {
     .hero,
-    .about-grid,
+    .grid-2,
+    .exo-grid,
     .contact-grid,
+    .gallery-grid,
+    .facts-grid,
+    .tech-grid,
+    .discoveries-grid,
     .missions-grid,
-    .sources-grid {
+    .cosmic-grid,
+    .planet-grid,
+    .stats {
       grid-template-columns: 1fr;
     }
-
-    .planets-grid { grid-template-columns: 1fr; }
-    .hero-visual { min-height: 420px; }
   }
 
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
     .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
     .nav-links {
+      display: none;
       position: absolute;
-      top: calc(100% + 12px);
+      top: calc(100% + 10px);
       left: 20px;
       right: 20px;
-      display: none;
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
       padding: 18px;
-      background: rgba(8, 11, 24, 0.96);
+      background: rgba(5, 8, 18, 0.96);
       border: 1px solid var(--border);
       border-radius: 18px;
-      box-shadow: var(--shadow);
     }
 
     nav.menu-open .nav-links { display: flex; }
     .nav-cta { display: none; }
-    .hero { padding: 112px 20px 72px; gap: 36px; }
-    .section { padding: 72px 20px; }
-    .facts-grid { grid-template-columns: 1fr; }
-    .hero-stats { grid-template-columns: 1fr; }
-    .planet-card { grid-template-columns: 1fr; }
+    .hero,
+    .section { padding: 108px 20px 72px; }
     footer {
       flex-direction: column;
       align-items: flex-start;
@@ -782,13 +813,12 @@
 </style>
 </head>
 <body class="history-page">
-
-<div class="stars-bg"></div>
-<div class="nebula-bg"></div>
+<div class="stars"></div>
+<div class="aurora"></div>
 
 <nav id="site-nav">
   <a href="index.html" class="nav-logo">&#10022; <span>COSMOS</span></a>
-  <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" id="nav-toggle">&#9776;</button>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -802,29 +832,92 @@
 
 <div class="page" id="page-home">
   <section class="hero">
-    <div class="hero-glow"></div>
     <div>
-      <div class="hero-tag">School Project 2026</div>
-      <h1 class="hero-title">Explore the<br><em>Universe</em></h1>
-      <p class="hero-sub">Travel through planets, missions, and the milestones that changed how humanity understands space.</p>
+      <div class="eyebrow">School Project 2026</div>
+      <h1>Explore the <br><em>Universe</em></h1>
+      <p>A deeper space education website with planets, missions, black holes, technology, real NASA imagery, and interactive tools for exploring the cosmos.</p>
       <div class="hero-actions">
-        <a href="about.html" class="btn-primary">Discover More &rarr;</a>
-        <a href="missions.html" class="btn-ghost">View Missions &nearr;</a>
+        <a href="planets.html" class="btn-primary">Explore Planets</a>
+        <a href="missions.html" class="btn-secondary">See Missions</a>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-num">13.8B</div><div class="hero-stat-label">Years old &mdash; the universe</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">2T+</div><div class="hero-stat-label">Estimated galaxies in space</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">8</div><div class="hero-stat-label">Planets in our solar system</div></div>
-        <div class="hero-stat"><div class="hero-stat-num">299,792</div><div class="hero-stat-label">km/s &mdash; speed of light</div></div>
+      <div class="stats">
+        <div class="stat"><strong>13.8B</strong><span>Years since the universe began</span></div>
+        <div class="stat"><strong>8</strong><span>Major planets orbit our Sun</span></div>
+        <div class="stat"><strong>5,000+</strong><span>Exoplanets confirmed by scientists</span></div>
+        <div class="stat"><strong>299,792</strong><span>km/s speed of light</span></div>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-planet-card">
-        <div class="hero-chip chip-top"><strong>Observatory</strong>Mapping deep space and distant light.</div>
-        <div class="hero-chip chip-bottom"><strong>Solar System</strong>From rocky worlds to giant ringed planets.</div>
+      <div class="hero-note top"><strong>Solar System</strong>Compare rocky, gas, ice, and dwarf worlds.</div>
+      <div class="hero-note bottom"><strong>Deep Space</strong>Explore galaxies, black holes, and discovery missions.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="eyebrow">NASA Images</div>
+    <h2>Real Space Images<br>With Captions</h2>
+    <p class="section-sub">Using real NASA images adds depth, realism, and stronger presentation value to the site.</p>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <figure>
+          <img src="https://www.nasa.gov/wp-content/uploads/2022/07/main_image_deep_field_smacs0723-5mb.jpg" alt="NASA Webb First Deep Field">
+          <figcaption><strong>Webb Deep Field</strong>One of the first James Webb images, showing thousands of distant galaxies in a tiny region of space.</figcaption>
+        </figure>
+      </div>
+      <div class="gallery-card">
+        <figure>
+          <img src="https://www.nasa.gov/wp-content/uploads/2023/03/potw2313a.jpg" alt="Hubble Pillars of Creation">
+          <figcaption><strong>Pillars of Creation</strong>Hubble's famous view of gas and dust where new stars are born inside the Eagle Nebula.</figcaption>
+        </figure>
+      </div>
+      <div class="gallery-card">
+        <figure>
+          <img src="https://www.nasa.gov/wp-content/uploads/2025/04/black-hole-jets-1.jpg" alt="NASA black hole visualization">
+          <figcaption><strong>Black Hole Jets</strong>A NASA visualization of matter and energy streaming away from a black hole system.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
+
+  <section class="section">
+    <div class="eyebrow">Discovery Highlights</div>
+    <h2>Latest Discoveries<br>And Ongoing Research</h2>
+    <p class="section-sub">A few recent NASA discovery themes help the project feel more current and research-based.</p>
+    <div class="discoveries-grid">
+      <div class="card">
+        <h3>Webb and the Boundary Between Planets and Stars</h3>
+        <p>NASA recently highlighted new Webb observations that help scientists better understand objects that sit between giant planets and small stars.</p>
+        <a class="source-link" href="https://www.nasa.gov/universe/nasas-webb-redefines-dividing-line-between-planets-stars/" target="_blank" rel="noreferrer">NASA source</a>
+      </div>
+      <div class="card">
+        <h3>Young Stars Lose X-rays Faster Than Expected</h3>
+        <p>NASA reported new findings on how young stars dim in X-rays earlier than scientists expected, which could affect how nearby planets develop.</p>
+        <a class="source-link" href="https://www.nasa.gov/universe/stars/nasa-finds-young-stars-dim-in-x-rays-surprisingly-quickly/" target="_blank" rel="noreferrer">NASA source</a>
+      </div>
+      <div class="card">
+        <h3>SPHEREx and Interstellar Ice</h3>
+        <p>NASA's SPHEREx mission is helping scientists map material in space, including the icy ingredients that contribute to stars and planets forming.</p>
+        <a class="source-link" href="https://www.nasa.gov/missions/spherex/nasas-spherex-to-hunt-for-interstellar-glaciers-and-more/" target="_blank" rel="noreferrer">NASA source</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="eyebrow">Interactive Quiz</div>
+    <h2>Which Planet<br>Are You?</h2>
+    <p class="section-sub">A small interactive feature makes the homepage more fun and memorable.</p>
+    <div class="quiz-card card">
+      <p>Pick the answer that sounds most like you.</p>
+      <div class="quiz-answers">
+        <button class="quiz-btn" data-result="Mars">Bold and determined</button>
+        <button class="quiz-btn" data-result="Saturn">Creative and elegant</button>
+        <button class="quiz-btn" data-result="Earth">Balanced and reliable</button>
+        <button class="quiz-btn" data-result="Neptune">Calm and mysterious</button>
+      </div>
+      <div class="quiz-result" id="quiz-result"></div>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-logo">&#10022; <span>COSMOS</span></div>
     <div class="footer-links">
@@ -833,50 +926,68 @@
       <a href="history.html">History</a>
       <a href="missions.html">Missions</a>
     </div>
-    <div class="footer-copy">&copy; 2026 COSMOS &mdash; School Project</div>
+    <div class="footer-copy">&copy; 2026 COSMOS - School Project</div>
   </footer>
 </div>
 
 <div class="page" id="page-about">
-  <section class="section" style="padding-top: 140px;">
-    <div class="section-label">About This Project</div>
-    <h2 class="section-title">Why Space<br>Matters</h2>
-    <p class="section-sub">Space exploration helps us understand where we came from, how our planet works, and what may exist beyond Earth.</p>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>From ancient stargazers to modern telescopes, humans have always looked upward with curiosity. Every new mission and every clearer image brings us closer to understanding how the universe formed and how our own world fits into it.</p>
-        <p>This project explores some of the most exciting parts of astronomy: the planets in our solar system, the history of space exploration, and the missions that pushed technology and science forward.</p>
-        <p>Space matters because it teaches us perspective. It reminds us how vast the universe is, how fragile Earth can be, and how powerful human curiosity becomes when people work together.</p>
-        <a href="planets.html" class="btn-primary" style="margin-top: 10px;">Explore Planets &rarr;</a>
+  <section class="section">
+    <div class="eyebrow">About This Project</div>
+    <h2>Why Space<br>Matters</h2>
+    <p class="section-sub">This project explores why astronomy matters, how space technology works, and why the universe continues to inspire research and discovery.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Project Overview</h3>
+        <p>Space science helps us understand how planets form, how stars evolve, and how Earth fits into a much larger universe. It combines physics, chemistry, engineering, and imagination.</p>
+        <p>Studying space also improves life on Earth through new technologies, satellite systems, medical tools, weather forecasting, and communication networks.</p>
       </div>
-      <div>
-        <p style="font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--purple-light); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:18px;">Did You Know?</p>
-        <div class="facts-grid">
-          <div class="fact-card"><div class="fact-num">13.8B</div><div class="fact-label">Approximate age of the universe in years</div></div>
-          <div class="fact-card"><div class="fact-num">8 min</div><div class="fact-label">Time for sunlight to reach Earth</div></div>
-          <div class="fact-card"><div class="fact-num">200B+</div><div class="fact-label">Stars in the Milky Way</div></div>
-          <div class="fact-card"><div class="fact-num">&infin;</div><div class="fact-label">The universe may extend beyond what we can observe</div></div>
+      <div class="card">
+        <h3>Did You Know?</h3>
+        <div class="facts-grid" style="grid-template-columns:repeat(2,minmax(0,1fr)); margin-top: 16px;">
+          <div class="fact-card"><strong>8 min</strong><p>Sunlight takes about eight minutes to reach Earth.</p></div>
+          <div class="fact-card"><strong>95</strong><p>Jupiter currently has at least 95 known moons.</p></div>
+          <div class="fact-card"><strong>1 day</strong><p>Venus rotates so slowly that one day lasts longer than one year there.</p></div>
+          <div class="fact-card"><strong>Infinite?</strong><p>The whole universe may be far larger than the part we can observe.</p></div>
         </div>
       </div>
     </div>
-    <div class="sources-grid">
-      <div class="source-card">
-        <h3>NASA</h3>
-        <p>Mission facts, images, and solar system research used for reference and inspiration.</p>
-        <a href="https://www.nasa.gov/" target="_blank" rel="noreferrer">Visit nasa.gov</a>
+  </section>
+
+  <section class="section">
+    <div class="eyebrow">Space Technology</div>
+    <h2>How Humans<br>Explore Space</h2>
+    <p class="section-sub">Rockets, telescopes, rovers, satellites, and stations all work together to help us learn about the cosmos.</p>
+    <div class="tech-grid">
+      <div class="tool-card">
+        <h3>Rockets</h3>
+        <p>Rockets create enough thrust to escape Earth's gravity and carry astronauts, satellites, and probes into space.</p>
+        <ul>
+          <li>Launch people and cargo</li>
+          <li>Deploy satellites and telescopes</li>
+          <li>Send missions toward the Moon, Mars, and beyond</li>
+        </ul>
       </div>
-      <div class="source-card">
-        <h3>ESA</h3>
-        <p>European Space Agency resources on telescopes, exploration, and planetary science.</p>
-        <a href="https://www.esa.int/" target="_blank" rel="noreferrer">Visit esa.int</a>
+      <div class="tool-card">
+        <h3>Rovers and Probes</h3>
+        <p>Robotic explorers collect data from places too dangerous or too distant for humans to reach directly.</p>
+        <ul>
+          <li>Study Martian rocks and climate</li>
+          <li>Investigate asteroids and outer planets</li>
+          <li>Search for signs of past habitability</li>
+        </ul>
       </div>
-      <div class="source-card">
-        <h3>NASA Images</h3>
-        <p>A searchable collection of real space photos and mission media for school research.</p>
-        <a href="https://images.nasa.gov/" target="_blank" rel="noreferrer">Visit images.nasa.gov</a>
+      <div class="tool-card">
+        <h3>Satellites and Stations</h3>
+        <p>Satellites orbit Earth for communication, navigation, and weather. Space stations allow long-term scientific research in orbit.</p>
+        <ul>
+          <li>Track storms and climate</li>
+          <li>Enable GPS and global communication</li>
+          <li>Support experiments in microgravity</li>
+        </ul>
       </div>
     </div>
   </section>
+
   <footer>
     <div class="footer-logo">&#10022; <span>COSMOS</span></div>
     <div class="footer-links">
@@ -885,66 +996,141 @@
       <a href="history.html">History</a>
       <a href="missions.html">Missions</a>
     </div>
-    <div class="footer-copy">&copy; 2026 COSMOS &mdash; School Project</div>
+    <div class="footer-copy">&copy; 2026 COSMOS - School Project</div>
   </footer>
 </div>
 
 <div class="page" id="page-planets">
-  <section class="section" style="padding-top: 140px;">
-    <div class="section-label">Our Solar System</div>
-    <h2 class="section-title">Eight Worlds,<br>One Star</h2>
-    <p class="section-sub">Every planet has its own story, atmosphere, and extreme conditions that make our solar system so fascinating.</p>
-    <div class="planets-grid">
-      <div class="planet-card">
-        <div class="planet-orb" style="background: radial-gradient(circle at 35% 35%, #cf8750, #7a3b13);"></div>
-        <div>
-          <div class="planet-name">Mars</div>
-          <div class="planet-tag">4th from Sun &middot; 2 moons</div>
-          <div class="planet-desc">Mars is known as the Red Planet because of iron-rich dust on its surface. Scientists study it closely because it may once have had rivers, lakes, and conditions that could support microbial life.</div>
-        </div>
+  <section class="section">
+    <div class="eyebrow">Solar System</div>
+    <h2>More Worlds,<br>More Variety</h2>
+    <p class="section-sub">This section now includes more planets, a filter, hover facts, exoplanets, and a comparison table to make the project feel more complete.</p>
+    <div class="filter-bar" id="planet-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="rocky">Rocky</button>
+      <button class="filter-btn" data-filter="gas">Gas Giants</button>
+      <button class="filter-btn" data-filter="ice">Ice Giants</button>
+      <button class="filter-btn" data-filter="dwarf">Dwarf Planets</button>
+    </div>
+    <div class="planet-grid" id="planet-grid">
+      <div class="planet-card" data-type="rocky">
+        <div class="planet-orb" style="background:radial-gradient(circle at 35% 35%, #b9b4a7, #6d675d);"></div>
+        <div class="planet-name">Mercury</div>
+        <div class="planet-tag">Rocky planet</div>
+        <p>The closest planet to the Sun, with huge temperature changes between day and night.</p>
+        <div class="planet-fact">Hover fact: A year on Mercury is only 88 Earth days long.</div>
       </div>
-      <div class="planet-card">
-        <div class="planet-orb" style="background: radial-gradient(circle at 35% 35%, #f0d37c, #ab7630); box-shadow: 0 0 0 8px rgba(240,211,124,0.12), 0 0 0 18px rgba(240,211,124,0.06);"></div>
-        <div>
-          <div class="planet-name">Saturn</div>
-          <div class="planet-tag">6th from Sun &middot; 146 moons</div>
-          <div class="planet-desc">Saturn is famous for its bright ring system made of ice and rock. It is a gas giant with many moons, including Titan, where lakes and rivers exist in liquid methane.</div>
-        </div>
+      <div class="planet-card" data-type="rocky">
+        <div class="planet-orb" style="background:radial-gradient(circle at 35% 35%, #f1d0a0, #9c6b35);"></div>
+        <div class="planet-name">Venus</div>
+        <div class="planet-tag">Rocky planet</div>
+        <p>Venus is wrapped in thick clouds and has a runaway greenhouse effect that makes it extremely hot.</p>
+        <div class="planet-fact">Hover fact: Venus rotates so slowly that one day lasts longer than one Venus year.</div>
       </div>
-      <div class="planet-card">
-        <div class="planet-orb" style="background: radial-gradient(circle at 35% 35%, #7ad0ff, #1b5a87);"></div>
-        <div>
-          <div class="planet-name">Earth</div>
-          <div class="planet-tag">3rd from Sun &middot; 1 moon</div>
-          <div class="planet-desc">Earth is the only known planet that supports life. Its atmosphere, oceans, magnetic field, and moderate temperatures make it unique in the solar system.</div>
-        </div>
+      <div class="planet-card" data-type="rocky">
+        <div class="planet-orb" style="background:radial-gradient(circle at 35% 35%, #73cfff, #1d5d89);"></div>
+        <div class="planet-name">Earth</div>
+        <div class="planet-tag">Rocky planet</div>
+        <p>Earth is the only known planet to support life, with liquid oceans and a protective atmosphere.</p>
+        <div class="planet-fact">Hover fact: About 71% of Earth's surface is covered by water.</div>
       </div>
-      <div class="planet-card">
-        <div class="planet-orb" style="background: radial-gradient(circle at 35% 35%, #4f84ff, #162e72);"></div>
-        <div>
-          <div class="planet-name">Neptune</div>
-          <div class="planet-tag">8th from Sun &middot; 16 moons</div>
-          <div class="planet-desc">Neptune is a distant ice giant with dark storms and some of the strongest winds in the solar system. Its deep blue color comes from methane in its atmosphere.</div>
-        </div>
+      <div class="planet-card" data-type="rocky">
+        <div class="planet-orb" style="background:radial-gradient(circle at 35% 35%, #cf8750, #7a3b13);"></div>
+        <div class="planet-name">Mars</div>
+        <div class="planet-tag">Rocky planet</div>
+        <p>Mars is cold, dusty, and home to giant volcanoes, dried riverbeds, and evidence of ancient water.</p>
+        <div class="planet-fact">Hover fact: Olympus Mons on Mars is the tallest known volcano in the solar system.</div>
       </div>
-      <div class="planet-card">
-        <div class="planet-orb" style="background: radial-gradient(circle at 35% 35%, #f6b36a, #bb5923);"></div>
-        <div>
-          <div class="planet-name">Jupiter</div>
-          <div class="planet-tag">5th from Sun &middot; 95 moons</div>
-          <div class="planet-desc">Jupiter is the largest planet in our solar system. Its Great Red Spot is a giant storm that has lasted for centuries, and several of its moons may hide oceans beneath icy crusts.</div>
-        </div>
+      <div class="planet-card" data-type="gas">
+        <div class="planet-orb" style="background:radial-gradient(circle at 35% 35%, #f7b36f, #b95925);"></div>
+        <div class="planet-name">Jupiter</div>
+        <div class="planet-tag">Gas giant</div>
+        <p>The largest planet, with powerful storms and dozens of moons, including Europa and Ganymede.</p>
+        <div class="planet-fact">Hover fact: Jupiter's Great Red Spot is a storm larger than Earth.</div>
       </div>
-      <div class="planet-card">
-        <div class="planet-orb" style="background: radial-gradient(circle at 35% 35%, #d8f1ff, #73a6c4); transform: rotate(98deg);"></div>
-        <div>
-          <div class="planet-name">Uranus</div>
-          <div class="planet-tag">7th from Sun &middot; 28 moons</div>
-          <div class="planet-desc">Uranus rotates on its side, which makes its seasons very unusual. It is an ice giant with a faint ring system and an atmosphere that can reach about -224&deg;C.</div>
-        </div>
+      <div class="planet-card" data-type="gas">
+        <div class="planet-orb" style="background:radial-gradient(circle at 35% 35%, #efd37c, #a87430); box-shadow:0 0 0 8px rgba(239,211,124,0.12), 0 0 0 18px rgba(239,211,124,0.06);"></div>
+        <div class="planet-name">Saturn</div>
+        <div class="planet-tag">Gas giant</div>
+        <p>Saturn is famous for its bright rings made of ice and rock particles.</p>
+        <div class="planet-fact">Hover fact: Saturn is so low in density it would float in a giant enough ocean.</div>
+      </div>
+      <div class="planet-card" data-type="ice">
+        <div class="planet-orb" style="background:radial-gradient(circle at 35% 35%, #d9f3ff, #79aeca); transform:rotate(95deg);"></div>
+        <div class="planet-name">Uranus</div>
+        <div class="planet-tag">Ice giant</div>
+        <p>Uranus rotates on its side, giving it unusual seasons and a distinct bluish color.</p>
+        <div class="planet-fact">Hover fact: Uranus has one of the coldest atmospheres in the solar system.</div>
+      </div>
+      <div class="planet-card" data-type="ice">
+        <div class="planet-orb" style="background:radial-gradient(circle at 35% 35%, #4f84ff, #162e72);"></div>
+        <div class="planet-name">Neptune</div>
+        <div class="planet-tag">Ice giant</div>
+        <p>Neptune is dark blue, windy, and very far from the Sun.</p>
+        <div class="planet-fact">Hover fact: Neptune's winds can reach over 2,000 km/h.</div>
+      </div>
+      <div class="planet-card" data-type="dwarf">
+        <div class="planet-orb" style="background:radial-gradient(circle at 35% 35%, #f1d8c0, #907768);"></div>
+        <div class="planet-name">Pluto</div>
+        <div class="planet-tag">Dwarf planet</div>
+        <p>Pluto is a small icy world in the Kuiper Belt and remains one of the most famous dwarf planets.</p>
+        <div class="planet-fact">Hover fact: Pluto has a heart-shaped glacier called Tombaugh Regio.</div>
+      </div>
+    </div>
+
+    <div class="compare-wrap">
+      <h3>Compare Planets</h3>
+      <div class="search-row">
+        <input class="search-input" id="planet-search" type="text" placeholder="Search comparison table by planet name">
+      </div>
+      <table id="planet-table">
+        <thead>
+          <tr>
+            <th>Planet</th>
+            <th>Diameter (km)</th>
+            <th>Distance from Sun</th>
+            <th>Moons</th>
+            <th>Average Temp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Mercury</td><td>4,879</td><td>57.9 million km</td><td>0</td><td>167 C</td></tr>
+          <tr><td>Venus</td><td>12,104</td><td>108.2 million km</td><td>0</td><td>464 C</td></tr>
+          <tr><td>Earth</td><td>12,742</td><td>149.6 million km</td><td>1</td><td>15 C</td></tr>
+          <tr><td>Mars</td><td>6,779</td><td>227.9 million km</td><td>2</td><td>-65 C</td></tr>
+          <tr><td>Jupiter</td><td>139,820</td><td>778.5 million km</td><td>95</td><td>-110 C</td></tr>
+          <tr><td>Saturn</td><td>116,460</td><td>1.4 billion km</td><td>146</td><td>-140 C</td></tr>
+          <tr><td>Uranus</td><td>50,724</td><td>2.9 billion km</td><td>28</td><td>-195 C</td></tr>
+          <tr><td>Neptune</td><td>49,244</td><td>4.5 billion km</td><td>16</td><td>-200 C</td></tr>
+          <tr><td>Pluto</td><td>2,377</td><td>5.9 billion km</td><td>5</td><td>-225 C</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="eyebrow">Exoplanets</div>
+    <h2>Worlds Beyond<br>Our Solar System</h2>
+    <p class="section-sub">Exoplanets are planets orbiting stars beyond our Sun. Learning about them makes the site feel broader and more advanced.</p>
+    <div class="exo-grid">
+      <div class="card">
+        <h3>Why Exoplanets Matter</h3>
+        <p>Exoplanets show that planetary systems are common across the galaxy. Some are giant hot worlds close to their stars, while others may be rocky and possibly more Earth-like.</p>
+        <ul>
+          <li>Scientists study atmospheres for signs of gases and weather</li>
+          <li>Some exoplanets orbit in habitable zones</li>
+          <li>They help us compare our solar system to others</li>
+        </ul>
+      </div>
+      <div class="card">
+        <figure>
+          <img src="https://science.nasa.gov/wp-content/uploads/2023/05/exoplanet-types-illustration-1-jpg.webp" alt="NASA exoplanet illustration">
+          <figcaption>NASA illustration showing a variety of exoplanet types found in other star systems.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
+
   <footer>
     <div class="footer-logo">&#10022; <span>COSMOS</span></div>
     <div class="footer-links">
@@ -953,60 +1139,71 @@
       <a href="history.html">History</a>
       <a href="missions.html">Missions</a>
     </div>
-    <div class="footer-copy">&copy; 2026 COSMOS &mdash; School Project</div>
+    <div class="footer-copy">&copy; 2026 COSMOS - School Project</div>
   </footer>
 </div>
 
 <div class="page" id="page-history">
-  <section class="section" style="padding-top: 140px;">
-    <div class="section-label">Space Exploration</div>
-    <h2 class="section-title">Milestones That<br>Changed Everything</h2>
-    <p class="section-sub">These landmark moments show how quickly space exploration has grown from first launches to powerful telescopes exploring the early universe.</p>
+  <section class="section">
+    <div class="eyebrow">Timeline</div>
+    <h2>Clickable Milestones<br>In Space History</h2>
+    <p class="section-sub">You can now click through key moments in space exploration instead of reading one long block of text.</p>
     <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-left"><span class="tl-year">1957</span><div class="tl-line-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-event">Sputnik 1 &mdash; The Space Age Begins</div>
-          <div class="tl-desc">The Soviet Union launched the first artificial satellite into orbit, proving that humans could place technology beyond Earth and beginning the modern space race.</div>
-        </div>
+      <details open>
+        <summary><span>Apollo 11</span><span class="timeline-year">1969</span></summary>
+        <div class="timeline-content"><p>The first human Moon landing proved that complex crewed missions beyond Earth orbit were possible.</p></div>
+      </details>
+      <details>
+        <summary><span>Voyager Program</span><span class="timeline-year">1977</span></summary>
+        <div class="timeline-content"><p>The Voyager spacecraft explored outer planets and continue traveling through interstellar space.</p></div>
+      </details>
+      <details>
+        <summary><span>Hubble Space Telescope</span><span class="timeline-year">1990</span></summary>
+        <div class="timeline-content"><p>Hubble captured detailed views of nebulae, galaxies, and deep space, transforming astronomy.</p></div>
+      </details>
+      <details>
+        <summary><span>Curiosity on Mars</span><span class="timeline-year">2012</span></summary>
+        <div class="timeline-content"><p>Curiosity found evidence that ancient Mars once had conditions that could support microbial life.</p></div>
+      </details>
+      <details>
+        <summary><span>Webb Telescope</span><span class="timeline-year">2021 onward</span></summary>
+        <div class="timeline-content"><p>Webb is revealing some of the earliest galaxies and helping scientists study distant planetary atmospheres.</p></div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="eyebrow">Black Holes and Galaxies</div>
+    <h2>Beyond The Solar System</h2>
+    <p class="section-sub">This section makes the website feel bigger than a planets project by exploring the structures and mysteries of deep space.</p>
+    <div class="cosmic-grid">
+      <div class="card">
+        <h3>Black Holes</h3>
+        <p>Black holes are regions of space where gravity is so strong that not even light can escape once it passes the event horizon.</p>
+        <ul>
+          <li>Can form when very massive stars collapse</li>
+          <li>Some sit at the centers of galaxies</li>
+          <li>They can create jets and heat surrounding matter</li>
+        </ul>
       </div>
-      <div class="tl-item">
-        <div class="tl-left"><span class="tl-year">1961</span><div class="tl-line-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-event">Yuri Gagarin &mdash; First Human in Space</div>
-          <div class="tl-desc">Gagarin became the first person to orbit Earth, showing that humans could survive and work in space for short periods.</div>
-        </div>
+      <div class="card">
+        <h3>Galaxies</h3>
+        <p>Galaxies are giant collections of stars, gas, dust, and dark matter. The Milky Way is the galaxy that contains our solar system.</p>
+        <ul>
+          <li>Spiral galaxies have rotating arms</li>
+          <li>Elliptical galaxies are more rounded</li>
+          <li>Galaxy collisions can reshape both systems</li>
+        </ul>
       </div>
-      <div class="tl-item">
-        <div class="tl-left"><span class="tl-year">1969</span><div class="tl-line-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-event">Apollo 11 &mdash; Humans Walk on the Moon</div>
-          <div class="tl-desc">Neil Armstrong and Buzz Aldrin became the first humans to walk on the Moon, one of the most famous achievements in scientific history.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"><span class="tl-year">1990</span><div class="tl-line-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-event">Hubble Space Telescope Launch</div>
-          <div class="tl-desc">Hubble transformed astronomy by capturing sharp images of distant galaxies, nebulae, and stars that changed our understanding of the universe.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"><span class="tl-year">2012</span><div class="tl-line-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-content">
-          <div class="tl-event">Curiosity Lands on Mars</div>
-          <div class="tl-desc">NASA's rover began studying Martian geology and climate, helping scientists learn that Mars once had conditions suitable for life.</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-left"><span class="tl-year">2022</span><div class="tl-line-dot"></div></div>
-        <div class="tl-content">
-          <div class="tl-event">James Webb Telescope Reveals Deep Space</div>
-          <div class="tl-desc">The first Webb images gave astronomers an extraordinary view into the early universe, showing galaxies formed not long after the Big Bang.</div>
-        </div>
+      <div class="cosmic-image card">
+        <figure>
+          <img src="https://www.nasa.gov/wp-content/uploads/2025/04/black-hole-jets-1.jpg" alt="NASA black hole image">
+          <figcaption>A NASA visualization showing powerful jets from material interacting with a black hole.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
+
   <footer>
     <div class="footer-logo">&#10022; <span>COSMOS</span></div>
     <div class="footer-links">
@@ -1015,51 +1212,61 @@
       <a href="planets.html">Planets</a>
       <a href="missions.html">Missions</a>
     </div>
-    <div class="footer-copy">&copy; 2026 COSMOS &mdash; School Project</div>
+    <div class="footer-copy">&copy; 2026 COSMOS - School Project</div>
   </footer>
 </div>
 
 <div class="page" id="page-missions">
-  <section class="section" style="padding-top: 140px;">
-    <div class="section-label">Featured Missions</div>
-    <h2 class="section-title">Historic<br>Missions</h2>
-    <p class="section-sub">These missions stand out because they changed what humans could do in space and what we could learn from it.</p>
-    <div class="missions-grid">
-      <article class="mission-card">
-        <div class="mission-kicker">Lunar Landing</div>
-        <div class="mission-title">Apollo 11</div>
-        <div class="mission-year">1969</div>
-        <p>The first mission to land humans on the Moon. Apollo 11 became a global symbol of science, engineering, and teamwork.</p>
-        <ul class="mission-points">
-          <li>First crewed Moon landing</li>
-          <li>Collected lunar rocks and samples</li>
-          <li>Proved deep-space crew missions were possible</li>
-        </ul>
-      </article>
-      <article class="mission-card">
-        <div class="mission-kicker">Mars Exploration</div>
-        <div class="mission-title">Curiosity Rover</div>
-        <div class="mission-year">2012</div>
-        <p>Curiosity has spent years exploring Mars, studying its rocks, weather, and history to learn whether it once could support life.</p>
-        <ul class="mission-points">
-          <li>Found evidence of ancient lakes</li>
-          <li>Studied Martian climate and chemistry</li>
-          <li>Helped prepare for future Mars missions</li>
-        </ul>
-      </article>
-      <article class="mission-card">
-        <div class="mission-kicker">Deep Space</div>
-        <div class="mission-title">James Webb Space Telescope</div>
-        <div class="mission-year">2021&ndash;Present</div>
-        <p>Webb observes distant stars, galaxies, and planetary atmospheres with extraordinary detail using infrared technology.</p>
-        <ul class="mission-points">
-          <li>Captured deep field galaxy images</li>
-          <li>Studies the early universe</li>
-          <li>Examines atmospheres of exoplanets</li>
-        </ul>
-      </article>
+  <section class="section">
+    <div class="eyebrow">Mission Archive</div>
+    <h2>Expandable Mission Cards</h2>
+    <p class="section-sub">These cards can be expanded for more detail, and they can also be filtered by mission type or searched by keyword.</p>
+    <div class="filter-bar" id="mission-filters">
+      <button class="filter-btn active" data-filter="all">All Missions</button>
+      <button class="filter-btn" data-filter="moon">Moon</button>
+      <button class="filter-btn" data-filter="mars">Mars</button>
+      <button class="filter-btn" data-filter="telescope">Telescopes</button>
+    </div>
+    <div class="search-row">
+      <input class="search-input" id="mission-search" type="text" placeholder="Search missions by name or topic">
+    </div>
+    <div class="missions-grid" id="mission-list">
+      <details class="mission-card" data-type="moon">
+        <summary><span>Apollo 11</span><span class="mission-meta">Moon - 1969</span></summary>
+        <div class="mission-content">
+          <p>The mission that first landed humans on the Moon and became one of the most famous scientific achievements in history.</p>
+          <ul>
+            <li>Neil Armstrong and Buzz Aldrin walked on the Moon</li>
+            <li>Collected rock samples and scientific data</li>
+            <li>Proved crewed lunar missions were possible</li>
+          </ul>
+        </div>
+      </details>
+      <details class="mission-card" data-type="mars">
+        <summary><span>Curiosity Rover</span><span class="mission-meta">Mars - 2012</span></summary>
+        <div class="mission-content">
+          <p>Curiosity investigates Mars to understand whether the planet once had conditions that could support life.</p>
+          <ul>
+            <li>Found evidence of ancient water</li>
+            <li>Studies Martian rocks and atmosphere</li>
+            <li>Still supports long-term research</li>
+          </ul>
+        </div>
+      </details>
+      <details class="mission-card" data-type="telescope">
+        <summary><span>James Webb Space Telescope</span><span class="mission-meta">Telescope - 2021</span></summary>
+        <div class="mission-content">
+          <p>Webb observes deep space in infrared light to reveal distant galaxies, star birth regions, and exoplanet atmospheres.</p>
+          <ul>
+            <li>Captured deep field galaxy images</li>
+            <li>Studies the early universe</li>
+            <li>Helps analyze atmospheric chemistry on distant worlds</li>
+          </ul>
+        </div>
+      </details>
     </div>
   </section>
+
   <footer>
     <div class="footer-logo">&#10022; <span>COSMOS</span></div>
     <div class="footer-links">
@@ -1068,28 +1275,38 @@
       <a href="planets.html">Planets</a>
       <a href="history.html">History</a>
     </div>
-    <div class="footer-copy">&copy; 2026 COSMOS &mdash; School Project</div>
+    <div class="footer-copy">&copy; 2026 COSMOS - School Project</div>
   </footer>
 </div>
 
 <div class="page" id="page-contact">
-  <section class="section" style="padding-top: 140px;">
-    <div class="section-label">Get In Touch</div>
-    <h2 class="section-title">Have a Question<br>About Space?</h2>
+  <section class="section">
+    <div class="eyebrow">Contact and FAQ</div>
+    <h2>Feedback, Questions,<br>And Support</h2>
+    <p class="section-sub">The contact area now feels more complete with a success state, thank-you panel, and FAQ.</p>
     <div class="contact-grid">
-      <div class="contact-info">
-        <p>This website was created as a school project about space exploration and astronomy. Use the form to send feedback, questions, or ideas straight to the project inbox.</p>
-        <div class="contact-detail">
-          <div class="contact-icon">&#10022;</div>
-          <div><div class="contact-detail-label">Project</div><div class="contact-detail-text">COSMOS &mdash; Space Exploration Website</div></div>
+      <div>
+        <div class="contact-panel">
+          <h3>Project Contact</h3>
+          <p style="color:var(--muted); margin-top:10px;">Send a message using the form. Replies should go to the inbox connected to the website form.</p>
+          <div class="contact-detail"><div class="contact-icon">&#10022;</div><div><small>Project</small><span>COSMOS Space Exploration Website</span></div></div>
+          <div class="contact-detail"><div class="contact-icon">&#128218;</div><div><small>Subject</small><span>School astronomy and science research</span></div></div>
+          <div class="contact-detail"><div class="contact-icon">&#128197;</div><div><small>Year</small><span>2026</span></div></div>
         </div>
-        <div class="contact-detail">
-          <div class="contact-icon">&#128218;</div>
-          <div><div class="contact-detail-label">Subject</div><div class="contact-detail-text">School Science / Astronomy Project</div></div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-icon">&#128197;</div>
-          <div><div class="contact-detail-label">Year</div><div class="contact-detail-text">2026</div></div>
+        <div class="faq-wrap" style="margin-top:20px;">
+          <h3>FAQ</h3>
+          <details class="faq-item">
+            <summary>What is this website about?</summary>
+            <p>This is a school project focused on planets, space missions, galaxies, and astronomy facts.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Are the images real?</summary>
+            <p>Yes. Several sections use real NASA images with captions and source links.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I use this for learning?</summary>
+            <p>Yes. The site is designed to be educational, easy to read, and strong enough for class presentations.</p>
+          </details>
         </div>
       </div>
       <form class="form" id="contact-form" action="https://formsubmit.co/aslamzeshan2009@gmail.com" method="POST" target="hidden_iframe">
@@ -1108,12 +1325,17 @@
           <label class="form-label">Message</label>
           <textarea class="form-input" name="message" placeholder="Ask me anything about space..." required></textarea>
         </div>
-        <button class="form-submit" type="submit">Send Message &rarr;</button>
+        <button class="form-submit" type="submit">Send Message</button>
         <p class="form-status" id="form-status">Your message will be sent directly to the project inbox.</p>
+        <div class="thank-you" id="thank-you-box">
+          <strong style="display:block; color:var(--cyan); margin-bottom:6px;">Thank you section</strong>
+          Your message helps improve the project and makes the website more useful for future visitors.
+        </div>
       </form>
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+      <iframe id="hidden_iframe" name="hidden_iframe" style="display:none;"></iframe>
     </div>
   </section>
+
   <footer>
     <div class="footer-logo">&#10022; <span>COSMOS</span></div>
     <div class="footer-links">
@@ -1123,38 +1345,94 @@
       <a href="history.html">History</a>
       <a href="missions.html">Missions</a>
     </div>
-    <div class="footer-copy">&copy; 2026 COSMOS &mdash; School Project</div>
+    <div class="footer-copy">&copy; 2026 COSMOS - School Project</div>
   </footer>
 </div>
 
 <script>
   const nav = document.getElementById("site-nav");
   const navToggle = document.getElementById("nav-toggle");
-
   if (nav && navToggle) {
     navToggle.addEventListener("click", () => {
-      const isOpen = nav.classList.toggle("menu-open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
+      const open = nav.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", String(open));
     });
   }
 
-  const form = document.getElementById("contact-form");
-  const statusText = document.getElementById("form-status");
-  const submitButton = form ? form.querySelector(".form-submit") : null;
-  const hiddenFrame = document.getElementById("hidden_iframe");
-  let submitted = false;
+  function setupFilter(buttonContainerId, itemContainerId) {
+    const bar = document.getElementById(buttonContainerId);
+    const itemWrap = document.getElementById(itemContainerId);
+    if (!bar || !itemWrap) return;
+    const buttons = Array.from(bar.querySelectorAll(".filter-btn"));
+    const items = Array.from(itemWrap.children);
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+        const filter = button.dataset.filter;
+        items.forEach((item) => {
+          item.style.display = filter === "all" || item.dataset.type === filter ? "" : "none";
+        });
+      });
+    });
+  }
 
-  if (form && statusText && submitButton && hiddenFrame) {
+  setupFilter("planet-filters", "planet-grid");
+  setupFilter("mission-filters", "mission-list");
+
+  const planetSearch = document.getElementById("planet-search");
+  const planetTable = document.getElementById("planet-table");
+  if (planetSearch && planetTable) {
+    planetSearch.addEventListener("input", () => {
+      const term = planetSearch.value.toLowerCase();
+      planetTable.querySelectorAll("tbody tr").forEach((row) => {
+        row.style.display = row.textContent.toLowerCase().includes(term) ? "" : "none";
+      });
+    });
+  }
+
+  const missionSearch = document.getElementById("mission-search");
+  const missionList = document.getElementById("mission-list");
+  if (missionSearch && missionList) {
+    missionSearch.addEventListener("input", () => {
+      const term = missionSearch.value.toLowerCase();
+      missionList.querySelectorAll(".mission-card").forEach((card) => {
+        card.style.display = card.textContent.toLowerCase().includes(term) ? "" : "none";
+      });
+    });
+  }
+
+  const quizResult = document.getElementById("quiz-result");
+  document.querySelectorAll(".quiz-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!quizResult) return;
+      const result = button.dataset.result;
+      const messages = {
+        Mars: "You got Mars. You are energetic, brave, and always ready for a challenge.",
+        Saturn: "You got Saturn. You are imaginative, stylish, and love standing out.",
+        Earth: "You got Earth. You are balanced, dependable, and grounded.",
+        Neptune: "You got Neptune. You are calm, thoughtful, and a little mysterious."
+      };
+      quizResult.style.display = "block";
+      quizResult.innerHTML = "<strong>Your planet match</strong>" + messages[result];
+    });
+  });
+
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+  const hiddenFrame = document.getElementById("hidden_iframe");
+  const submitBtn = form ? form.querySelector(".form-submit") : null;
+  let submitted = false;
+  if (form && status && hiddenFrame && submitBtn) {
     form.addEventListener("submit", () => {
       submitted = true;
-      submitButton.textContent = "Sending...";
-      statusText.textContent = "Sending your message...";
+      submitBtn.textContent = "Sending...";
+      status.textContent = "Sending your message...";
     });
-
     hiddenFrame.addEventListener("load", () => {
       if (!submitted) return;
-      statusText.textContent = "Message sent! Please check the inbox owner email for the first-time confirmation if needed.";
-      submitButton.textContent = "Send Another Message";
+      status.textContent = "Message sent successfully.";
+      submitBtn.textContent = "Send Another Message";
       form.reset();
       submitted = false;
     });
